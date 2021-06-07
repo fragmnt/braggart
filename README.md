@@ -1,4 +1,4 @@
-<img src="https://dl.airtable.com/.attachments/bf3f2e3ced60342a87eb17629a16f334/06ddac25/braggart_icon.png" width="128px" height="128px" />
+<img src="https://dl.airtable.com/.attachmentThumbnails/14e7df4750ff9429d3c8dabd3ece0ec9/6ab5f11f" width="128px" height="128px" />
 
 # braggart
 ### Defintion: A person who boasts about achievements or possessions.
