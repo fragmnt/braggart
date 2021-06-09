@@ -1,0 +1,19 @@
+(************* :: CREATE USER PROFILE FROM WALLET ADDRESS ON BRAGGART CONTRACT :: ************)
+
+scilla_version 0
+
+library BraggartUserLib
+
+
+
+
+
+
+(*** TRANSITIONS ***)
+
+
+(* Transition signature *)
+transition firstTransition (param_1 : type_1, param_2 : type_2)
+  (* Transition body *)
+
+end

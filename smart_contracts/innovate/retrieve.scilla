@@ -1,0 +1,6 @@
+(** RETRIEVE NFTS/POSTS/GALLERIES FROM A USER CONTRACT **)
+
+scilla_version 0
+
+library BraggartRetrieveContentLib
+

@@ -1,0 +1,11 @@
+(* Example Smart Contract [Test] *)
+
+(* VERSION *)
+
+scilla_version 0
+
+(* ASSOCIATED LIBRARIES *)
+
+library NAME 
+
+(** CONTRACT DEFINTION **)
