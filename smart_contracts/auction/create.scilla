@@ -74,13 +74,6 @@ field bid_duration_time : Option Uint128 = None {Uint128}
 
 field members : Map ByStr20 (Pair (Uint32) (BNum))
 
-(**  struct Favorites {                        **)
-(**      	ByStr20 favoriter_address;         **)
-(**         String username;                   **)
-(**  }                                         **)
-
-field favorites : Map ByStr20 String = Emp ByStr20 String
-
 (**  struct Offers {                           **)
 (**      	ByStr20 offer_address;             **)
 (**         Uint128 offer_price;               **)
