@@ -6,6 +6,6 @@ scilla_version 0
 
 (* ASSOCIATED LIBRARIES *)
 
-library NAME 
+library EXAMPLE_NAME 
 
 (** CONTRACT DEFINTION **)

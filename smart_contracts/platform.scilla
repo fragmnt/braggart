@@ -1,0 +1,6 @@
+(** BRAGGART PLATFORM SMART CONTRACT ORCHESTRATOR **)
+
+scilla_version 0
+
+library Braggart
+

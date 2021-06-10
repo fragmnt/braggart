@@ -2,5 +2,63 @@
 
 scilla_version 0
 
+(******************************)
+(*    Associated Libraries    *)        
+(******************************)
+
+import BoolUtils PairUtils ListUtils IntUtils
 library BraggartCreateNFTLib
 
+(******* Global Variables *****)
+
+
+
+(******* Library Functions ****)
+
+
+(*** Error Events/Exceptions **)
+
+type Error =
+    CodeTokenExists
+
+
+(******************************)
+(*    Contract definitions    *)       
+(*        Parameters          *) 
+(******************************)
+
+contract BraggartCreateNFT
+(
+    creator: ByStr20,
+    symbol: String,
+    auction_type: Uint32,
+    platform_address: ByStr20,
+)
+
+(******* Mutable Fields *******)
+
+field item_name : String = String ""
+field description : String = String ""
+
+(**  struct Bids {                             **)
+(**      	ByStr20 offer_address;             **)
+(**         Uint128 offer_price;               **)
+(**         BNum created_at;                   **)
+(**  }                                         **)
+
+field bids : Map ByStr20 (Pair (Uint128) (BNum))
+
+(**  struct Members {                          **)
+(**      	ByStr20 member_address;            **)
+(**         Uint32 tier_purchased; // Tier[id] **)
+(**         BNum joined_at;                    **)
+(**  }                                         **)
+
+field members : Map ByStr20 (Pair (Uint32) (BNum))
+
+(**  struct Favorites {                        **)
+(**      	ByStr20 favoriter_address;         **)
+(**         String username;                   **)
+(**  }                                         **)
+
+field favorites : Map ByStr20 String = Emp ByStr20 String
