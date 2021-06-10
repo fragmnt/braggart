@@ -7,11 +7,11 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
+    "@zilliqa-js/zilliqa": "^3.0.0",
     "aframe": "^1.2.0",
     "babylonjs": "^4.2.0",
+    "bn.js": "^5.2.0",
     "filepond": "^4.28.2",
-    "ganache-cli": "^6.12.2",
-    "ganache-core": "^2.13.2",
     "ipfs": "^0.55.3",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^50.1.1",
@@ -19,7 +19,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-filepond": "^7.1.1",
-    "three": "^0.129.0"
+    "three": "^0.129.0",
+    "tslib": "^2.2.0"
   },
   "devDependencies": {
     "react-scripts": "^4.0.3"
