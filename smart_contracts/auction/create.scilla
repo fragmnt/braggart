@@ -1,4 +1,4 @@
-(************* :: CREATE AND CUSTOMIZE NFT CONTRACT :: ************)
+(************* :: CREATE AND CUSTOMIZE AUCTION PARAMETERS FOR NFT CONTRACT :: ************)
 
 scilla_version 0
 
@@ -14,6 +14,7 @@ library BraggartCreateNFTLib
 
 
 (******* Library Functions ****)
+
 
 
 (*** Error Events/Exceptions **)
@@ -62,3 +63,20 @@ field members : Map ByStr20 (Pair (Uint32) (BNum))
 (**  }                                         **)
 
 field favorites : Map ByStr20 String = Emp ByStr20 String
+
+(******************************)
+(*    General Procedures      *)
+(*    General Transitions     *)        
+(******************************)
+
+(* Procedure signature *)
+procedure isFirstProcedure (param_1: type_1)
+    (* Procedure body *)
+    
+end
+
+(* Transition signature *)
+transition firstTransition (param_1 : type_1, param_2 : type_2)
+    (* Transition body *)
+
+end
