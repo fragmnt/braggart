@@ -12,6 +12,7 @@
     "babylonjs": "^4.2.0",
     "bn.js": "^5.2.0",
     "filepond": "^4.28.2",
+    "gun": "^0.2020.1232",
     "ipfs": "^0.55.3",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^50.1.1",
