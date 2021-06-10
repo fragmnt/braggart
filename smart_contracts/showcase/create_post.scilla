@@ -1,0 +1,97 @@
+(************* :: CREATE POSTS ON BRAGGART CONTRACT :: ************)
+
+scilla_version 0
+
+(******************************)
+(*    Associated Libraries    *)        
+(******************************)
+
+import BoolUtils PairUtils ListUtils IntUtils
+library BraggartCreatePostLib
+
+(******* Global Variables *****)
+
+
+
+(******* Library Functions ****)
+
+
+
+
+(*** Error Events/Exceptions **)
+
+type Error =
+  | CodeTokenExists
+
+
+(******************************)
+(*    Contract definitions    *)       
+(*        Parameters          *) 
+(******************************)
+
+(** Blockchain Type = 0: Ethereum, 1: Near, 2: Harmony, 3: Matic **)
+
+contract BraggartCreatePost
+
+(
+    owner: ByStr20,
+    blockchainType: Uint32,
+    tokenAddress: ByStr20,
+    postUUID: Uint128
+)
+
+(******* Mutable Fields *******)
+
+field post_caption : String = ""
+
+(**  struct Favorited {                        **)
+(**      	ByStr20 favoriter_address;         **)
+(**         String username;                   **)
+(**  }                                         **)
+
+field favorited : Map ByStr20 String = Emp ByStr20 String
+
+(**  struct Repost {                           **)
+(**      	ByStr20 reposter_address;          **)
+(**         Uint64 repost_order_id;            **)
+(**         BNum time_reposted_at              **)
+(**  }                                         **)
+
+field reposts : Map ByStr20 (Pair (Uint64) (BNum)) = Emp ByStr20 (Pair (Uint64) (BNum))
+
+field view_count : Uint64 = Uint64 0
+
+(**  struct Comment {                           **)
+(**      	ByStr20 commenter_address;          **)
+(**         String text_content_of_comment;     **)
+(**         BNum time_commented_at              **)
+(**  }                                          **)
+
+field comments : Map ByStr20 (Pair (String) (BNum)) = Emp ByStr20 (Pair (String) (BNum))
+field timestamp : BNum = BNum 0
+
+(**  struct Tags {                              **)
+(**      	Uint32 tagId;                       **)
+(**         String tagName;                     **)
+(**  }                                          **)
+
+field tags : Map Uint32 String = Emp Uint32 String
+
+field external_url : String = ""
+
+(******************************)
+(*    General Procedures      *)
+(*    General Transitions     *)        
+(******************************)
+
+(* Procedure signature *)
+procedure isFirstProcedure (param_1: type_1)
+    (* Procedure body *)
+
+end
+
+(* Transition signature *)
+transition addItemToBundle (param_1 : type_1, param_2 : type_2)
+    (* Transition body *)
+
+end

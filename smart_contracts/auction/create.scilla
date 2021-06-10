@@ -15,15 +15,37 @@ library BraggartCreateNFTLib
 
 (******* Library Functions ****)
 
-let k = ((x ^ 1/2) * y) / z) 
-(* bonding curve formula..k is continous price...x is startPrice
+    (***** BONDING CURVE FORMULA *****)
+    (** Desmos Notation: y=m\left(1+.75\right)^{\log2x\ }+b ****)
+    (*** let y = m((1+.75)^log^2x) + b ***)
+    (** y = continous_price **)
+    (** m = starting_price; b = total_token_supply, cx = constants, dx=multiplicable *******)
+    (**** let m = Uint32 1
+    let cx = builtin add v x 
+    let dx = builtin pow y z 
+    let bc = builtin pow cx dx 
+    let partial_sum = builtin mul m bc 
+    let y_sum = builtin add partial_sum b  ***)
 
-...y is total_token_supply...z is decimal notation..*)
+let y_sum = (* continous price *)
+  let m = Uint32 5 in (* starting_price *)
+  let b = Uint32 6 in (* total_token_supply *)
+
+  let v = Uint32 1 in (* 1 *)
+  let x = Uint32 2 in (* .75 *)
+  let y = Uint32 3 in (* log *)
+  let z = Uint32 4 in (* 2x *)
+
+  let cx = builtin add v x in (* (1 + .75) *)
+  let dx = builtin pow y z in (* log^2x *)
+  let bc = builtin pow cx dx in (* (1+.75)^log^2x *)
+  let partial_sum = builtin mul m bc in (* m((1+.75)^log^2x) *)
+  builtin add partial_sum b (* y = m((1+.75)^log^2x) + b *)
 
 (*** Error Events/Exceptions **)
 
 type Error =
-    CodeTokenExists
+  | CodeTokenExists
 
 
 (******************************)
@@ -31,56 +53,58 @@ type Error =
 (*        Parameters          *) 
 (******************************)
 
+(** AuctionType = 0: Fixed Price, 1: English Bid, 2: Fixed Price, 3: Declining Price, 4: Open for Offers, 5: Batches With Different Prices; "Bundles" **)
+
 contract BraggartCreateNFT
 (
     creator: ByStr20,
     symbol: String,
-    auction_type: Uint32,
-    platform_contract_address: ByStr20,
+    auction_type: Uint32, 
+    platform_contract_address: ByStr20
 )
 
 (******* Mutable Fields *******)
 
-field item_name : String = String ""
-field description : String = String ""
+field item_name : String = ""
+field description : String = ""
 field unlockableContent : Option Bool = None {Bool}
 
 (**** PATREON-STYLE TIERED UNLOCKABLE CONTENT ***)
 (**  struct Tiers {                            **)
-(**      	Uint32 orderId;                    **)
+(**      	Uint32 orderId;                      **)
 (**         String name;                       **)
 (**         String content;                    **)
 (**         Uint128 unlock_price;              **)
 (**         Uint128 access_time_duration;      **)
 (**  }                                         **)
 
-field tiers : Map Uint32 (Pair (Pair (String) (String)) (Pair (Uint128) (Uint128)))
+field tiers : Map Uint32 (Pair (Pair (String) (String)) (Pair (Uint128) (Uint128))) = Emp ByStr20 (Pair (Uint128) (Pair (BNum) (Uint128)))
 
 (**  struct Bids {                             **)
-(**      	ByStr20 bidder_address;            **)
+(**      	ByStr20 bidder_address;              **)
 (**         Uint128 bid_price;                 **)
 (**         BNum created_at;                   **)
 (**         Uint128 duration_time;             **)
 (**  }                                         **)
 
-field bids : Map ByStr20 (Pair (Uint128) (BNum))
+field bids : Map ByStr20 (Pair (Uint128) (Pair (BNum) (Uint128))) = Emp ByStr20 (Pair (Uint128) (Pair (BNum) (Uint128)))
 field bid_duration_time : Option Uint128 = None {Uint128}
 
 (**  struct Members {                          **)
-(**      	ByStr20 member_address;            **)
+(**      	ByStr20 member_address;              **)
 (**         Uint32 tier_purchased; // Tier[id] **)
 (**         BNum joined_at;                    **)
 (**  }                                         **)
 
-field members : Map ByStr20 (Pair (Uint32) (BNum))
+field members : Map ByStr20 (Pair (Uint32) (BNum)) = Emp ByStr20 (Pair (Uint32) (BNum))
 
 (**  struct Offers {                           **)
-(**      	ByStr20 offer_address;             **)
+(**      	ByStr20 offer_address;               **)
 (**         Uint128 offer_price;               **)
 (**         BNum created_at;                   **)
 (**  }                                         **)
 
-field offers : Map ByStr20 (pair (Uint128) (BNum))
+field offers : Map ByStr20 (Pair (Uint128) (BNum)) = Emp ByStr20 (Pair (Uint128) (BNum))
 
 field total_supply : Uint256 = Uint256 1
 field initial_fixed_price : Option Uint128 = None {Uint128}

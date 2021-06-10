@@ -1,19 +1,4 @@
-(** BRAGGART PLATFORM SMART CONTRACT ORCHESTRATOR **)
-
-(** ASSOCIATED SMART CONTRACTS **)
-
-(** ========================== **)
-(**==* auction/patreon segment ==**)
-    (*** bundles.scilla ***)
-    (*** create.scilla  ***)
-(**==* showcase segment ==**)
-   (*** create_gallery.scilla ***)
-   (*** create_post.scilla    ***)
-   (*** explore.scilla        ***)
-   (*** user_profile.scilla   ***)
-(**==* innovate segment ==**)
-   (*** retrieve.scilla       ***)
-(** ========================== **)
+(************* :: CREATE GALLERIES ON BRAGGART CONTRACT :: ************)
 
 scilla_version 0
 
@@ -22,7 +7,7 @@ scilla_version 0
 (******************************)
 
 import BoolUtils PairUtils ListUtils IntUtils
-library Braggart
+library BraggartCreateGalleryLib
 
 (******* Global Variables *****)
 
@@ -32,23 +17,36 @@ library Braggart
 
 
 
+
 (*** Error Events/Exceptions **)
 
 type Error =
   | CodeTokenExists
+
 
 (******************************)
 (*    Contract definitions    *)       
 (*        Parameters          *) 
 (******************************)
 
-contract Braggart
+contract BraggartCreateGallery 
 (
-
+    curator: ByStr20,
+    galleryUUID: Uint128
 )
 
 (******* Mutable Fields *******)
 
+field gallery_name : String = ""
+field gallery_description : String = ""
+
+
+(**  struct FeaturedPosts {                    **)
+(**      	Uint32 postUUID;                   **)
+(**         ByStr20 post_contract_address;     **)
+(**  }                                         **)
+
+field featured_posts : Map Uint32 ByStr20 = Emp Uint32 ByStr20
 
 (******************************)
 (*    General Procedures      *)
@@ -62,6 +60,7 @@ procedure isFirstProcedure (param_1: type_1)
 end
 
 (* Transition signature *)
-transition isFirstTransition (param_1 : type_1, param_2 : type_2)
+transition addItemToBundle (param_1 : type_1, param_2 : type_2)
     (* Transition body *)
+
 end

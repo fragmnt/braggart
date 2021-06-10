@@ -1,6 +1,54 @@
-(** RETRIEVE NFTS/POSTS/GALLERIES FROM A USER CONTRACT **)
+(** RETRIEVE NFTS/POSTS/GALLERIES GIVEN A USER WALLET ADDRESS CONTRACT **)
 
 scilla_version 0
 
-library BraggartRetrieveContentLib
+(******************************)
+(*    Associated Libraries    *)        
+(******************************)
 
+import BoolUtils PairUtils ListUtils IntUtils
+library BraggartRetrieveContentFor3DLib
+
+
+(******* Global Variables *****)
+
+
+
+(******* Library Functions ****)
+
+
+
+
+(*** Error Events/Exceptions **)
+
+type Error =
+  | CodeTokenExists
+
+(******************************)
+(*    Contract definitions    *)       
+(*        Parameters          *) 
+(******************************)
+
+contract BraggartRetrieveContentFor3D
+(
+
+)
+
+(******* Mutable Fields *******)
+
+(******************************)
+(*    General Procedures      *)
+(*    General Transitions     *)        
+(******************************)
+
+(* Procedure signature *)
+procedure isFirstProcedure (param_1: type_1)
+    (* Procedure body *)
+
+end
+
+(* Transition signature *)
+transition retrievePostsByUserWalletAdress (postUUID : Uint128, post_contract_address : ByStr20)
+    (* Transition body *)
+
+end

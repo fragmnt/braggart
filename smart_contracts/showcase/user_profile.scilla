@@ -1,0 +1,102 @@
+(************* :: CREATE/DISPLAY USER PROFILE FROM WALLET ADDRESS ON BRAGGART CONTRACT :: ************)
+
+scilla_version 0
+
+(******************************)
+(*    Associated Libraries    *)        
+(******************************)
+
+import BoolUtils PairUtils ListUtils IntUtils
+library BraggartUserProfileLib
+
+(******* Global Variables *****)
+
+
+
+(******* Library Functions ****)
+
+
+
+
+(*** Error Events/Exceptions **)
+
+type Error =
+  | CodeTokenExists
+
+
+(******************************)
+(*    Contract definitions    *)       
+(*        Parameters          *) 
+(******************************)
+
+contract BraggartUserProfile
+
+(
+  wallet_address: ByStr20,
+  username: String
+)
+
+
+(******* Mutable Fields *******)
+
+field headerImgURL : Option String = None {String}
+field profilePfpImg : Option String = None {String}
+field name : Option String = None {String}
+field bio : Option String = None {String}
+
+(*=======  FOLLOWERS =======*)
+
+(**  struct Followers {                         **)
+(**      	  ByStr20 account_address;            **)
+(**         String account_username;            **)
+(**         BNum followed_at_timestamp;         **)
+(**  }                                          **)
+
+field followers : Map ByStr20 (Pair (String) (BNum)) = Emp ByStr20 (Pair (String) (BNum))
+
+(**  struct Following {                         **)
+(**      	  ByStr20 account_address;            **)
+(**         String account_username;            **)
+(**         BNum followed_at_timestamp;         **)
+(**  }                                          **)
+
+field following : Map ByStr20 (Pair (String) (BNum)) = Emp ByStr20 (Pair (String) (BNum))
+
+field external_website_url : Option String = None {String}
+field social_url_twitter : Option String = None {String}
+
+(*=======  COLLECTIONS =======*)
+
+(**  struct Favorites {                         **)
+(**      	  Uint32 favorite_order_id;           **)
+(**         ByStr20 post_address;               **)
+(**         Uint128 post_UUID;                  **)
+(**  }                                          **)
+
+field favorites : Map Uint32 (Pair (ByStr20) (Uint128)) = Emp Uint32 (Pair (ByStr20) (Uint128))
+
+(**  struct Owned {                        **)
+(**      	  ByStr20 post_owner;            **)
+(**         ByStr20 post_address;          **)
+(**         Uint128 post_UUID;             **)
+(**  }                                     **)
+
+field owned : Map ByStr20 (Pair (ByStr20) (Uint128)) = Emp ByStr20 (Pair (ByStr20) (Uint128))
+
+(**  struct Created {                        **)
+(**      	ByStr20 creator;                   **)
+(**       ByStr20 nft_token_address          **)
+(**       BNum    nft_was_created_at         **)
+(**  }                                       **)
+
+field created : Map ByStr20 (Pair (ByStr20) (BNum)) = Emp ByStr20 (Pair (ByStr20) (BNum))
+
+
+(*** TRANSITIONS ***)
+
+
+(* Transition signature *)
+transition firstTransition (param_1 : type_1, param_2 : type_2)
+  (* Transition body *)
+
+end

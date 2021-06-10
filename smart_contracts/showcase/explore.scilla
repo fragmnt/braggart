@@ -1,4 +1,4 @@
-(************* :: EXPLORE/RETRIEVE/INTERACT WITH NFTS ON BRAGGART CONTRACT :: ************)
+(************* :: EXPLORE/RETRIEVE/INTERACT WITH NFTS, POSTS, USERs and GALLERIES ON BRAGGART CONTRACT :: ************)
 
 scilla_version 0
 
@@ -6,7 +6,7 @@ scilla_version 0
 (*    Associated Libraries    *)        
 (******************************)
 
-library BraggartSocialDiscoverNFTLib
+library BraggartSocialDiscoveryLib
 
 (******* Global Variables *****)
 
@@ -17,7 +17,7 @@ library BraggartSocialDiscoverNFTLib
 (*** Error Events/Exceptions **)
 
 type Error =
-    CodeTokenExists
+  | CodeTokenExists
 
 
 (******************************)
@@ -25,18 +25,12 @@ type Error =
 (*        Parameters          *) 
 (******************************)
 
-contract BraggartSocialDiscoverNFT
+contract BraggartSocialDiscovery
 (
 )
 
 (******* Mutable Fields *******)
 
-(**  struct Favorites {                        **)
-(**      	ByStr20 favoriter_address;         **)
-(**         String username;                   **)
-(**  }                                         **)
-
-field favorites : Map ByStr20 String = Emp ByStr20 String
 
 (******************************)
 (*    General Procedures      *)

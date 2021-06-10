@@ -21,7 +21,7 @@ library BraggartCreateBundleLib
 (*** Error Events/Exceptions **)
 
 type Error =
-    CodeTokenExists
+  | CodeTokenExists
 
 
 (******************************)
@@ -36,13 +36,13 @@ contract BraggartCreateBundle
     creator: ByStr20,
     symbol: String,
     auction_type: Uint32, 
-    platform_contract_address: ByStr20,
+    platform_contract_address: ByStr20
 )
 
 (******* Mutable Fields *******)
 
-field bundle_name : String = String ""
-field description : String = String ""
+field bundle_name : String = ""
+field description : String = ""
 field initial_fixed_price : Option Uint128 = None {Uint128}
 
 (**  struct bundleItems {                      **)
