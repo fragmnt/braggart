@@ -1,4 +1,4 @@
-(************* :: CREATE AND CUSTOMIZE AUCTION PARAMETERS FOR NFT CONTRACT :: ************)
+(************* :: CREATE AND CUSTOMIZE AUCTION PARAMETERS FOR PATREON-style NFT CONTRACT :: ************)
 
 scilla_version 0
 
@@ -40,11 +40,13 @@ contract BraggartCreateNFT
 
 field item_name : String = String ""
 field description : String = String ""
+field unlockableContent : Option Bool = None {Bool}
 
 (**  struct Bids {                             **)
-(**      	ByStr20 offer_address;             **)
-(**         Uint128 offer_price;               **)
+(**      	ByStr20 bidder_address;            **)
+(**         Uint128 bid_price;                 **)
 (**         BNum created_at;                   **)
+(**         Uint128 duration_time;             **)
 (**  }                                         **)
 
 field bids : Map ByStr20 (Pair (Uint128) (BNum))
@@ -64,6 +66,17 @@ field members : Map ByStr20 (Pair (Uint32) (BNum))
 
 field favorites : Map ByStr20 String = Emp ByStr20 String
 
+(**  struct Offers {                           **)
+(**      	ByStr20 offer_address;             **)
+(**         Uint128 offer_price;               **)
+(**         BNum created_at;                   **)
+(**  }                                         **)
+
+field offers : Map ByStr20 (pair (Uint128) (BNum))
+
+field total_supply : Uint256 = Uint256 1
+field initial_fixed_price : Option Uint128 = None {Uint128}
+
 (******************************)
 (*    General Procedures      *)
 (*    General Transitions     *)        
@@ -72,7 +85,7 @@ field favorites : Map ByStr20 String = Emp ByStr20 String
 (* Procedure signature *)
 procedure isFirstProcedure (param_1: type_1)
     (* Procedure body *)
-    
+
 end
 
 (* Transition signature *)

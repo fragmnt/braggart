@@ -1,0 +1,69 @@
+(************* :: CREATE BUNDLED AUCTION OF NFTs CONTRACT :: ************)
+
+scilla_version 0
+
+(******************************)
+(*    Associated Libraries    *)        
+(******************************)
+
+import BoolUtils PairUtils ListUtils IntUtils
+library BraggartCreateBundleLib
+
+(******* Global Variables *****)
+
+
+
+(******* Library Functions ****)
+
+
+
+(*** Error Events/Exceptions **)
+
+type Error =
+    CodeTokenExists
+
+
+(******************************)
+(*    Contract definitions    *)       
+(*        Parameters          *) 
+(******************************)
+
+(* auction_type : Uint32 = 0:: Fixed Price, 1:: English Auction *)
+
+contract BraggartCreateBundle
+(
+    creator: ByStr20,
+    symbol: String,
+    auction_type: Uint32, 
+    platform_address: ByStr20,
+)
+
+(******* Mutable Fields *******)
+
+field bundle_name : String = String ""
+field description : String = String ""
+field initial_fixed_price : Option Uint128 = None {Uint128}
+
+(**  struct bundleItems {                      **)
+(**      	ByStr20 item_address;              **)
+(**         Uint64 bundleOrderId;              **)
+(**  }                                         **)
+
+field bundle_items : Map ByStr20 Uint64 = Emp ByStr20 Uint64
+
+(******************************)
+(*    General Procedures      *)
+(*    General Transitions     *)        
+(******************************)
+
+(* Procedure signature *)
+procedure isFirstProcedure (param_1: type_1)
+    (* Procedure body *)
+
+end
+
+(* Transition signature *)
+transition firstTransition (param_1 : type_1, param_2 : type_2)
+    (* Transition body *)
+
+end
