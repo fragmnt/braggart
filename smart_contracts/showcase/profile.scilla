@@ -1,4 +1,4 @@
-(************* :: CREATE USER PROFILE FROM WALLET ADDRESS ON BRAGGART CONTRACT :: ************)
+(************* :: CREATE/DISPLAY USER PROFILE FROM WALLET ADDRESS ON BRAGGART CONTRACT :: ************)
 
 scilla_version 0
 

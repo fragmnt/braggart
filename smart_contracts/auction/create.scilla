@@ -15,7 +15,10 @@ library BraggartCreateNFTLib
 
 (******* Library Functions ****)
 
+let k = ((x ^ 1/2) * y) / z) 
+(* bonding curve formula..k is continous price...x is startPrice
 
+...y is total_token_supply...z is decimal notation..*)
 
 (*** Error Events/Exceptions **)
 
@@ -33,7 +36,7 @@ contract BraggartCreateNFT
     creator: ByStr20,
     symbol: String,
     auction_type: Uint32,
-    platform_address: ByStr20,
+    platform_contract_address: ByStr20,
 )
 
 (******* Mutable Fields *******)
@@ -41,6 +44,17 @@ contract BraggartCreateNFT
 field item_name : String = String ""
 field description : String = String ""
 field unlockableContent : Option Bool = None {Bool}
+
+(**** PATREON-STYLE TIERED UNLOCKABLE CONTENT ***)
+(**  struct Tiers {                            **)
+(**      	Uint32 orderId;                    **)
+(**         String name;                       **)
+(**         String content;                    **)
+(**         Uint128 unlock_price;              **)
+(**         Uint128 access_time_duration;      **)
+(**  }                                         **)
+
+field tiers : Map Uint32 (Pair (Pair (String) (String)) (Pair (Uint128) (Uint128)))
 
 (**  struct Bids {                             **)
 (**      	ByStr20 bidder_address;            **)
@@ -50,6 +64,7 @@ field unlockableContent : Option Bool = None {Bool}
 (**  }                                         **)
 
 field bids : Map ByStr20 (Pair (Uint128) (BNum))
+field bid_duration_time : Option Uint128 = None {Uint128}
 
 (**  struct Members {                          **)
 (**      	ByStr20 member_address;            **)
@@ -77,6 +92,46 @@ field offers : Map ByStr20 (pair (Uint128) (BNum))
 field total_supply : Uint256 = Uint256 1
 field initial_fixed_price : Option Uint128 = None {Uint128}
 
+(**  struct Auctions {                         **)
+(**         Uint128 access_time_duration;      **)
+    
+(**         Uint128 start_price;               **)
+(**         Uint128 reserve_price;             **)
+(**         Uint128 minimum_price;             **)
+(**         Uint128 current_price;             **)
+    
+(**   	    Bool lockedToOffers?;              **)
+(**         Bool biddingIsAllowed?;            **)
+   
+(**         Bool includeMinimumPrice?;         **)
+(**         Bool includeReservePrice?;         **)
+
+(**         Bool includeStartPrice?;           **)
+(**         Bool includeEndingPrice?;          **)
+    
+(**         Bool currentPriceIsShown?;         **)
+(**         Bool increasePriceOnBondCurve?;    **)
+(**  }                                         **)
+
+field auction_access_time_duration : Uint128 = None {Uint128}
+
+field auction_start_price : Option Uint128 = None {Uint128}
+field auction_reserve_price : Option Uint128 = None {Uint128}
+field auction_minimum_price : Option Uint128 = None {Uint128}
+field auction_current_price : Option Uint128 = None {Uint128}
+
+field auction_lockedToOffers : Option Bool = None {Bool}
+field auction_biddingIsAllowed : Option Bool = None {Bool}
+
+field auction_includeMinimumPrice : Option Bool = None {Bool}
+field auction_includeReservePrice : Option Bool = None {Bool}
+
+field auction_includeStartPrice : Option Bool = None {Bool}
+field auction_includeEndingPrice : Option Bool = None {Bool}
+
+field auction_currentPriceIsShown : Option Bool = None {Bool}
+field auction_increasePriceOnBondCurve : Option Bool = None {Bool}
+
 (******************************)
 (*    General Procedures      *)
 (*    General Transitions     *)        
@@ -89,7 +144,7 @@ procedure isFirstProcedure (param_1: type_1)
 end
 
 (* Transition signature *)
-transition firstTransition (param_1 : type_1, param_2 : type_2)
+transition addItemToBundle (param_1 : type_1, param_2 : type_2)
     (* Transition body *)
 
 end

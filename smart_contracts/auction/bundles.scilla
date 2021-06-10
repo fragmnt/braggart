@@ -17,6 +17,7 @@ library BraggartCreateBundleLib
 
 
 
+
 (*** Error Events/Exceptions **)
 
 type Error =
@@ -35,7 +36,7 @@ contract BraggartCreateBundle
     creator: ByStr20,
     symbol: String,
     auction_type: Uint32, 
-    platform_address: ByStr20,
+    platform_contract_address: ByStr20,
 )
 
 (******* Mutable Fields *******)
@@ -50,6 +51,32 @@ field initial_fixed_price : Option Uint128 = None {Uint128}
 (**  }                                         **)
 
 field bundle_items : Map ByStr20 Uint64 = Emp ByStr20 Uint64
+
+(**  struct Auctions {                         **)
+(**         Uint128 access_time_duration;      **)
+    
+(**         Uint128 reserve_price;             **)
+(**         Uint128 minimum_price;             **)
+(**         Uint128 current_price;             **)
+    
+(**         Bool includeMinimumPrice?;         **)
+(**         Bool includeReservePrice?;         **)
+    
+(**         Bool biddingIsAllowed?;            **)
+(**         Bool currentPriceIsShown?;         **)
+(**  }                                         **)
+
+field auction_access_time_duration : Uint128 = None {Uint128}
+
+field auction_reserve_price : Option Uint128 = None {Uint128}
+field auction_minimum_price : Option Uint128 = None {Uint128}
+field auction_current_price : Option Uint128 = None {Uint128}
+
+field auction_includeMinimumPrice : Option Bool = None {Bool}
+field auction_includeReservePrice : Option Bool = None {Bool}
+
+field auction_biddingIsAllowed : Option Bool = None {Bool}
+field auction_currentPriceIsShown : Option Bool = None {Bool}
 
 (******************************)
 (*    General Procedures      *)
