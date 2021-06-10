@@ -5,4 +5,4 @@
 ### Defintion: A person who boasts about achievements or possessions.
 For the Zilliqa hackathon, built on the Zilliqa blockchain with Web3 development tools like `zaya-rpc`, `zilpay`, `scilla`, `WebXR`, `react.js` and `three.js`.
 
-> dApp deployed Vercel.com, smart contracts deployed to Zilliqa blockchain.
+> dApp deployed on Vercel.com, smart contracts deployed to Zilliqa blockchain.
